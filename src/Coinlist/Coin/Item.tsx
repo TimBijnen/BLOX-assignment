@@ -12,28 +12,28 @@ const CoinlistItem = ( {
     const displayPrice = amount.toFixed( 2 ).replace( ".", "," )
 
     return (
-        <tr className="coinlist-tr">
-            <td className="coinlist-td">
-                <div className="coinlist-td__details">
+        <tr className="coinlist__tr">
+            <td className="coinlist__td">
+                <div className="coin--details">
                     <img
-                        className="coinlist-img"
+                        className="coinlist__img"
                         src={ icon }
                         alt="coin-icon"
                     />
-                    <div className="coinlist--name-container">
-                        <span className="coinlist--name">
+                    <div className="coin--name-container">
+                        <span className="coin--name">
                             { shortName }
                         </span>
-                        <span className="coinlist--name">
+                        <span className="coin--name">
                             { longName }
                         </span>
                     </div>
                 </div>
             </td>
-            <td className="coinlist-td">
+            <td className="coinlist__td">
                 <CoinPercentage value={ priceChangePercentage } />
             </td>
-            <td className="coinlist--price">
+            <td className="coinlist__td coin--price">
                 { "€ " }
                 { displayPrice }
             </td>

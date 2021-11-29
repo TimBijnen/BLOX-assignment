@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Arrow from "./CoinArrow"
 
-type Sort = {
+type SortProps = {
     [ key: string ]: number,
     shortName: number,
     price: number,
@@ -12,7 +12,7 @@ type TableHeaderProps = {
 }
 
 const CoinlistTableHeader = ( { sortCoins }: TableHeaderProps ) => {
-    const [ sort, setSort ] = useState<Sort>( { shortName: 0, price: 0 } )
+    const [ sort, setSort ] = useState<SortProps>( { shortName: 0, price: 0 } )
 
     const onClickTableHeader = ( type: string ) => () => {
         const direction = ( ( sort[ type ] + 2 ) % 3 ) - 1
@@ -24,30 +24,30 @@ const CoinlistTableHeader = ( { sortCoins }: TableHeaderProps ) => {
 
     return (
         <thead>
-            <tr className="coinlist-tr">
+            <tr className="coinlist__tr">
                 <th
-                    className="coinlist-th"
+                    className="coinlist__th"
                     onClick={ onClickTableHeader( "shortName" ) }
                 >
                     <span className={
                         sort.shortName !== 0
-                        ? "coinlist-th__title__active-sort"
+                        ? "coinlist__th--active-sort"
                         : ""
                     }>
                         Coin
                     </span>
                     <Arrow direction={ sort.shortName } />
                 </th>
-                <th className="coinlist-th">
+                <th className="coinlist__th">
                     Price change
                 </th>
                 <th
-                    className="coinlist-th"
+                    className="coinlist__th"
                     onClick={ onClickTableHeader( "price" ) }
                     >
                     <span className={
                         sort.price !== 0
-                        ? "coinlist-th__title__active-sort"
+                        ? "coinlist__th--active-sort"
                         : ""
                     }>
                         price
