@@ -13,7 +13,7 @@ type Sort = {
 
 const useCoinlist = () => {
     const [ currentSort, setCurrentSort ] = useState<Sort>( { key: "", sortUp: false } )
-    const [ searchValue, setSearchValue ] = useState<string>()
+    const [ searchValue, setSearchValue ] = useState<string>( "" )
     const [ state, dispatch ] = useReducer( reducer, { coins: [] } )
 
     useEffect( () => {
@@ -23,7 +23,9 @@ const useCoinlist = () => {
                 const { data } = await axios.get( API )
                 dispatch( { type: actions.SET_DATA, payload: data } )
             } catch ( error: any ) {
-                console.error( error.response.status )
+                console.error(
+                    `An error occured fetching data from the API. Status code: ${ error.response.status }`
+                )
             } finally {
                 dispatch( { type: actions.UNLOAD } )
             }
@@ -37,21 +39,21 @@ const useCoinlist = () => {
         const { key, sortUp } = currentSort
         if ( key === "price" ) {
             if ( sortUp ) {
-                coins = state.coins.sort(
+                coins = coins.sort(
                     ( a: Coin, b: Coin ) => a.price.amount > b.price.amount ? -1 : 1
                 )
             } else {
-                coins = state.coins.sort(
+                coins = coins.sort(
                     ( a: Coin, b: Coin ) => a.price.amount > b.price.amount ? 1 : -1
                 )
             }
         } else if ( key === "shortName" ) {
             if ( sortUp ) {
-                coins = state.coins.sort(
+                coins = coins.sort(
                     ( a: Coin, b: Coin ) => a.shortName > b.shortName ? -1 : 1
                 )
             } else {
-                coins = state.coins.sort(
+                coins = coins.sort(
                     ( a: Coin, b: Coin ) => a.shortName > b.shortName ? 1 : -1
                 )
             }
@@ -60,7 +62,7 @@ const useCoinlist = () => {
     }
 
     const applyFilter = ( coins: Coin[] ) => {
-        if ( searchValue ) {
+        if ( searchValue !== "" ) {
             return coins.filter(
                 ( coin: Coin ) =>
                     coin.shortName.toLowerCase().indexOf( searchValue ) >= 0
