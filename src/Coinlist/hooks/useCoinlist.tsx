@@ -20,7 +20,8 @@ const useCoinlist = () => {
                 dispatch( { type: actions.UNLOAD } )
             }
         }
-        loadData()
+        const interval = setInterval( loadData, 15000)
+        return () => clearInterval( interval )
     }, [] )
 
     return [ state ]
