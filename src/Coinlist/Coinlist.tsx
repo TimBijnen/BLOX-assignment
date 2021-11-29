@@ -6,11 +6,28 @@ const CoinList = () => {
 
     return (
         <div>
-            { coins.map( ( c: Coin ) => (
-                <div>
-                    { c.shortName }
-                </div>
-            ) ) }
+            <table className="coinlist-table">
+                <thead>
+                    <tr>
+                        <th className="coinlist-th">
+                            Coin
+                        </th>
+                        <th className="coinlist-th">
+                            Price change
+                        </th>
+                        <th className="coinlist-th">
+                            price
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    { coins.map( ( c: Coin ) => (
+                        <tr>
+                            { c.shortName }
+                        </tr>
+                    ) ) }
+                </tbody>
+            </table>
         </div>
     )
 }

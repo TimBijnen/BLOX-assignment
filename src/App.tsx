@@ -1,3 +1,4 @@
+import "./App.css"
 import CoinList from "./Coinlist/Coinlist"
 
 const App = () => {

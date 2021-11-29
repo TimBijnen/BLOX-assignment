@@ -1,0 +1,9 @@
+.coinlist-table {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.coinlist-th {
+    text-transform: uppercase;
+    text-align: left;
+}
