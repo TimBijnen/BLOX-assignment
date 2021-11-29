@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from "react"
+import { useReducer, useEffect, useState } from "react"
 import axios from "axios"
 import reducer from "./reducer"
 import actions from "../types/actions"
@@ -6,7 +6,14 @@ import Coin from "../types/coin"
 
 const { REACT_APP_API_ENDPOINT: API = "" } = process.env
 
+type Sort = {
+    key: string,
+    sortUp: boolean,
+}
+
 const useCoinlist = () => {
+    const [ currentSort, setCurrentSort ] = useState<Sort>( { key: "", sortUp: false } )
+    const [ searchValue, setSearchValue ] = useState<string>()
     const [ state, dispatch ] = useReducer( reducer, { coins: [] } )
 
     useEffect( () => {
@@ -25,9 +32,9 @@ const useCoinlist = () => {
         const interval = setInterval( loadData, 15000)
         return () => clearInterval( interval )
     }, [] )
-    
-    const sortCoins = ( key: string, sortUp: boolean ) => {
-        let coins
+
+    const applySort = ( coins: Coin[] ) => {
+        const { key, sortUp } = currentSort
         if ( key === "price" ) {
             if ( sortUp ) {
                 coins = state.coins.sort(
@@ -38,7 +45,7 @@ const useCoinlist = () => {
                     ( a: Coin, b: Coin ) => a.price.amount > b.price.amount ? 1 : -1
                 )
             }
-        } else {
+        } else if ( key === "shortName" ) {
             if ( sortUp ) {
                 coins = state.coins.sort(
                     ( a: Coin, b: Coin ) => a.shortName > b.shortName ? -1 : 1
@@ -49,10 +56,32 @@ const useCoinlist = () => {
                 )
             }
         }
-        dispatch( { type: actions.SET_DATA, payload: coins } )
+        return coins
     }
 
-    return [ state, sortCoins ]
+    const applyFilter = ( coins: Coin[] ) => {
+        if ( searchValue ) {
+            return coins.filter(
+                ( coin: Coin ) =>
+                    coin.shortName.toLowerCase().indexOf( searchValue ) >= 0
+                    || coin.longName.toLowerCase().indexOf( searchValue ) >= 0
+            )
+        }
+        return coins
+    }
+    
+    const sortCoins = ( key: string, sortUp: boolean ) => {
+        setCurrentSort( { key, sortUp } )
+    }
+    
+    return [ {
+        ...state,
+        searchValue,
+        coins: applySort( applyFilter( state.coins ) ),
+    }, {
+        sortCoins,
+        setSearchValue
+    } ]
 }
 
 export default useCoinlist
