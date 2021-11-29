@@ -1,26 +1,16 @@
 import useCoinlist from "./hooks/useCoinlist"
 import Coin from "./types/coin"
 import CoinlistItem from "./CoinlistItem"
+import CoinlistTableHeader from "./CoinlistTableHeader"
 
 const CoinList = () => {
-    const [ { coins } ] = useCoinlist()
-
+    const [ { coins }, sortCoins ] = useCoinlist()
+    
     return (
         <div>
+
             <table className="coinlist-table">
-                <thead>
-                    <tr className="coinlist-tr">
-                        <th className="coinlist-th">
-                            Coin
-                        </th>
-                        <th className="coinlist-th">
-                            Price change
-                        </th>
-                        <th className="coinlist-th">
-                            price
-                        </th>
-                    </tr>
-                </thead>
+                <CoinlistTableHeader sortCoins={ sortCoins } />
                 <tbody>
                     { coins.map( ( coin: Coin ) => (
                         <CoinlistItem key={ coin.shortName } { ...coin } />

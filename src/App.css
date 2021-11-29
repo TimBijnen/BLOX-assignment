@@ -14,6 +14,10 @@
     text-align: left;
 }
 
+.coinlist-th__title__active-sort {
+    text-decoration: underline;
+}
+
 .coinlist-img {
     width: 30px;
     height: 30px;
