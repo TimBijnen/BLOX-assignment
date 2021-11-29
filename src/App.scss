@@ -1,0 +1,28 @@
+/* Small example of an scss approach */
+
+
+$primary-grey: grey;
+$max-width: 1000px;
+
+.coinlist {
+    &-table {
+        margin: auto;
+        width: 100%;
+        max-width: $max-width;
+        border-collapse: collapse; 
+    }
+
+    &-tr {
+        border-bottom: 1px solid $primary-grey;
+    }
+
+    &-th {
+        text-transform: uppercase;
+        text-align: left;
+    }
+
+    &-img {
+        width: 30px;
+        height: 30px;
+    }
+}
