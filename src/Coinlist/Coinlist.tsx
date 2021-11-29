@@ -1,7 +1,7 @@
 import useCoinlist from "./hooks/useCoinlist"
 import Coin from "./types/coin"
 import CoinSearch from "./CoinSearch"
-import CoinlistItem from "./CoinlistItem"
+import CoinlistItem from "./Coin/Item"
 import CoinlistTableHeader from "./CoinlistTableHeader"
 
 const CoinList = () => {

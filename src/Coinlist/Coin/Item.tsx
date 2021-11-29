@@ -1,5 +1,5 @@
-import Coin from "./types/coin"
-import CoinPercentage from "./CoinPercentage"
+import Coin from "../types/coin"
+import CoinPercentage from "./Percentage"
 
 const CoinlistItem = ( {
     icon,
