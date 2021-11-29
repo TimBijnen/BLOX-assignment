@@ -12,6 +12,8 @@ const reducer: Reducer<CoinList|any, CoinListAction> = (
     switch ( type ) {
         case actions.LOAD:
             return { ...state, isLoading: true }
+        case actions.UNLOAD:
+            return { ...state, isLoading: false }
         case actions.SET_DATA:
             return { ...state, coins: payload, isLoading: false }
         default:

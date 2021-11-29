@@ -11,8 +11,14 @@ const useCoinlist = () => {
     useEffect( () => {
         async function loadData() {
             dispatch( { type: actions.LOAD } )
-            const { data } = await axios.get( API )
-            dispatch( { type: actions.SET_DATA, payload: data } )
+            try {
+                const { data } = await axios.get( API )
+                dispatch( { type: actions.SET_DATA, payload: data } )
+            } catch ( error: any ) {
+                console.error( error.response.status )
+            } finally {
+                dispatch( { type: actions.UNLOAD } )
+            }
         }
         loadData()
     }, [] )
