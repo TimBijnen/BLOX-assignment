@@ -8,7 +8,7 @@ const CoinList = () => {
     const [ { coins, searchValue }, { sortCoins, setSearchValue } ] = useCoinlist()
 
     return (
-        <div>
+        <div className="coinlist">
             <CoinSearch searchValue={ searchValue } setSearchValue={ setSearchValue } />
             { coins.length > 0 ? (
                 <table className="coinlist-table">
