@@ -1,14 +1,22 @@
-import actions from "./actions"
+import { Reducer } from "react"
+import actions from "../types/actions"
+import CoinList from "../types/coins"
+import CoinListAction from "../types/action"
 
-const reducer = ( state: any, { type, data }:any ) => {
+const reducer: Reducer<CoinList|any, CoinListAction> = (
+    state: CoinList,
+    action: CoinListAction,
+) => {
+    const { type, payload } = action
+
     switch ( type ) {
         case actions.LOAD:
             return { ...state, isLoading: true }
         case actions.SET_DATA:
-            return { ...state, coins: data, isLoading: false }
+            return { ...state, coins: payload, isLoading: false }
         default:
             console.error("Unknown action", type)
-            return { ...state }
+            return state
     }
 }
 
