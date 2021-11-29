@@ -20,15 +20,17 @@ const CoinlistItem = ( {
                         src={ icon }
                         alt="coin-icon"
                     />
-                    <span className="coinlist--name">
-                        { shortName }
-                    </span>
-                    <span className="coinlist--name">
-                        { longName }
-                    </span>
+                    <div className="coinlist--name-container">
+                        <span className="coinlist--name">
+                            { shortName }
+                        </span>
+                        <span className="coinlist--name">
+                            { longName }
+                        </span>
+                    </div>
                 </div>
             </td>
-            <td>
+            <td className="coinlist-td">
                 <CoinPercentage value={ priceChangePercentage } />
             </td>
             <td className="coinlist--price">

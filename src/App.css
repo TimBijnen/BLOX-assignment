@@ -3,6 +3,7 @@
     padding: 8px;
 }
 
+
 .coinlist-table {
     margin: auto;
     width: 100%;
@@ -12,7 +13,7 @@
 
 .coinlist-tr {
     border-bottom: 1px solid rgb(192, 192, 192);
-    line-height: 40px;
+    line-height: 56px;
     margin: auto;
 }
 
@@ -37,13 +38,17 @@
 .coinlist--name {
     min-width: 75px;    
 }
-.coinlist--name:nth-child(3) {
+.coinlist--name:last-of-type {
     color:rgb(192, 192, 192);
+}
+.coinlist--name-container {
+    width: 100%;
+    display: flex;
 }
 
 .coinlist-img {
-    width: 30px;
-    height: 30px;
+    width: 43px;
+    height: 43px;
     margin: 5px 15px 5px 5px;
 }
 
@@ -51,9 +56,30 @@
     text-align: right;
 }
 
-.coinprice__positive {
+.coinlist--arrow-small {
+    font-size: 8px;
+    margin-right: 5px;
+}
+
+.coinlist--percentage-positive {
     color: #48ef48;
 }
-.coinprice__negative {
+.coinlist--percentage-negative {
     color: red;
+}
+
+@media only screen and (max-width: 700px) {
+    .coinlist-td:nth-child(2),
+    .coinlist-th:nth-child(2) {
+        display: none;
+    }
+    .coinlist--name-container {
+        padding: 5px;
+        line-height: 20px;
+        display: block;
+    }
+    .coinlist--name {
+        width: 100%;
+        display: block;
+    }
 }
