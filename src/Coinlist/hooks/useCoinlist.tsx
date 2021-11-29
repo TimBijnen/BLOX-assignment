@@ -17,10 +17,10 @@ const useCoinlist = () => {
     const [ state, dispatch ] = useReducer( reducer, { coins: [] } )
 
     useEffect( () => {
-        async function loadData() {
+        async function loadData( forceSuccess: boolean ) {
             dispatch( { type: actions.LOAD } )
             try {
-                const { data } = await axios.get( API )
+                const { data } = await axios.get( `${ API }${ forceSuccess ? "/?debug=succeed" : "" }` )
                 dispatch( { type: actions.SET_DATA, payload: data } )
             } catch ( error: any ) {
                 console.error(
@@ -30,7 +30,7 @@ const useCoinlist = () => {
                 dispatch( { type: actions.UNLOAD } )
             }
         }
-        loadData()
+        loadData( true )
         const interval = setInterval( loadData, 15000)
         return () => clearInterval( interval )
     }, [] )
