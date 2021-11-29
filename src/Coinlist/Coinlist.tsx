@@ -1,5 +1,6 @@
 import useCoinlist from "./hooks/useCoinlist"
 import Coin from "./types/coin"
+import CoinlistItem from "./CoinlistItem"
 
 const CoinList = () => {
     const [ { coins } ] = useCoinlist()
@@ -8,7 +9,7 @@ const CoinList = () => {
         <div>
             <table className="coinlist-table">
                 <thead>
-                    <tr>
+                    <tr className="coinlist-tr">
                         <th className="coinlist-th">
                             Coin
                         </th>
@@ -21,10 +22,8 @@ const CoinList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    { coins.map( ( c: Coin ) => (
-                        <tr>
-                            { c.shortName }
-                        </tr>
+                    { coins.map( ( coin: Coin ) => (
+                        <CoinlistItem key={ coin.shortName } { ...coin } />
                     ) ) }
                 </tbody>
             </table>
