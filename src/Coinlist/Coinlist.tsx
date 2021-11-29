@@ -10,6 +10,7 @@ const CoinList = () => {
     return (
         <div className="coinlist">
             <CoinSearch searchValue={ searchValue } setSearchValue={ setSearchValue } />
+            
             { coins.length > 0 ? (
                 <table className="coinlist__table">
                     <CoinlistTableHeader sortCoins={ sortCoins } />
