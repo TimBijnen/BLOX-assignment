@@ -1,8 +1,8 @@
+import CoinList from "./Coinlist/Coinlist"
+
 const App = () => {
     return (
-        <div>
-            Clean
-        </div>
+        <CoinList />
     )
 }
 
