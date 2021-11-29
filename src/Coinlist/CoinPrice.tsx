@@ -4,8 +4,9 @@ const CoinPrice = ( { value }: { value: number } ) => {
     const arrow = isPositive ? "▲" : "▼"
     return (
         <div className={ className }>
-            { arrow }
+            <span>{ arrow }</span>
             { value.toFixed( 2 ) }
+            { "%" }
         </div>
     )
 }

@@ -8,25 +8,32 @@ const CoinlistItem = ( {
     priceChangePercentage,
     price,
 }: Coin ) => {
-    const { unit, amount } = price
+    const { amount } = price
+    const displayPrice = amount.toFixed( 2 ).replace( ".", "," )
 
     return (
         <tr className="coinlist-tr">
             <td className="coinlist-td">
-                <img
-                    className="coinlist-img"
-                    src={ icon }
-                    alt="coin-icon"
-                />
-                { shortName }
-                { longName }
+                <div className="coinlist-td__details">
+                    <img
+                        className="coinlist-img"
+                        src={ icon }
+                        alt="coin-icon"
+                    />
+                    <span className="coinlist--name">
+                        { shortName }
+                    </span>
+                    <span className="coinlist--name">
+                        { longName }
+                    </span>
+                </div>
             </td>
             <td>
                 <CoinPrice value={ priceChangePercentage } />
             </td>
-            <td>
-                { unit }
-                { amount }
+            <td className="coinlist--price">
+                { "€ " }
+                { displayPrice }
             </td>
         </tr>
     )
