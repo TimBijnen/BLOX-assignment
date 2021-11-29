@@ -11,7 +11,7 @@ const CoinList = () => {
         <div className="coinlist">
             <CoinSearch searchValue={ searchValue } setSearchValue={ setSearchValue } />
             { coins.length > 0 ? (
-                <table className="coinlist-table">
+                <table className="coinlist__table">
                     <CoinlistTableHeader sortCoins={ sortCoins } />
                     <tbody>
                         { coins.map( ( coin: Coin ) => (
