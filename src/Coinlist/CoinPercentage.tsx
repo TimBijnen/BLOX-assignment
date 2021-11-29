@@ -1,4 +1,4 @@
-const CoinPrice = ( { value }: { value: number } ) => {
+const CoinPercentage = ( { value }: { value: number } ) => {
     const isPositive = value >= 0
     const className = `coinprice__${ isPositive ? "positive" : "negative" }`
     const arrow = isPositive ? "▲" : "▼"
@@ -11,4 +11,4 @@ const CoinPrice = ( { value }: { value: number } ) => {
     )
 }
 
-export default CoinPrice
+export default CoinPercentage
