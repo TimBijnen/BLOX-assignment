@@ -7,7 +7,12 @@ const CoinSearch = ( { searchValue, setSearchValue }: any ) => {
     }
 
     return (
-        <input value={ searchValue } onChange={ handleSearchInput } />
+        <input
+            className="coinlist__input"
+            value={ searchValue }
+            onChange={ handleSearchInput }
+            placeholder="Search..."
+        />
     )
 }
 

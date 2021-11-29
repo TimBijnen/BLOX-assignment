@@ -1,3 +1,8 @@
+.coinlist__input {
+    border-radius: 8px;
+    padding: 8px;
+}
+
 .coinlist-table {
     margin: auto;
     width: 100%;
@@ -16,6 +21,10 @@
     text-align: left;
     color:rgb(192, 192, 192);
 }
+.coinlist-th:last-of-type {
+    text-align: right;
+}
+
 
 .coinlist-th__title__active-sort {
     text-decoration: underline;
