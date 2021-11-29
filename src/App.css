@@ -18,3 +18,10 @@
     width: 30px;
     height: 30px;
 }
+
+.coinprice__positive {
+    color: green;
+}
+.coinprice__negative {
+    color: red;
+}

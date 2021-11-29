@@ -1,4 +1,5 @@
 import Coin from "./types/coin"
+import CoinPrice from "./CoinPrice"
 
 const CoinlistItem = ( {
     icon,
@@ -21,7 +22,7 @@ const CoinlistItem = ( {
                 { longName }
             </td>
             <td>
-                { priceChangePercentage }
+                <CoinPrice value={ priceChangePercentage } />
             </td>
             <td>
                 { unit }
